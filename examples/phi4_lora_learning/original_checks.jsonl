@@ -1,0 +1,6 @@
+{"ticket": "My work email stopped syncing on my phone.", "label": "O365"}
+{"ticket": "Teams won't let me join a scheduled meeting.", "label": "O365"}
+{"ticket": "I cannot open the shared mailbox for our support team.", "label": "O365"}
+{"ticket": "Windows says the network drive is unavailable.", "label": "Fileservice"}
+{"ticket": "Please give me permission to open the department's shared folder.", "label": "Fileservice"}
+{"ticket": "I accidentally deleted a document from our network share. Please recover it.", "label": "Fileservice"}

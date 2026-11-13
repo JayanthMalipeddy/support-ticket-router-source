@@ -1,96 +1,66 @@
-# Colab results review — 6 November 2026
+# Successful Phi-4-mini run: 12 November 2026
 
-**Assessment: the supplied artifacts support a completed training run, but the evaluation failed. Model routing quality is not yet established. Do not retrain solely because these reports show 0% accuracy.**
+Run: `phi4-learning-20261112-181641-65125f`.
+The downloaded ZIP supports completed QLoRA training, a saved adapter, and
+successful prediction calls before and after training.
 
-This is an offline review of `week5-evidence.zip` and `phi4-router-adapter.zip`. No model inference was rerun locally. Original archives were left unchanged.
+| Dataset | Before | After |
+|---|---:|---:|
+| 14 training tickets | 12/14 (85.7%) | 14/14 (100%) |
+| Original six checks, outside training | 6/6 | 6/6 |
+| Fresh six synthetic held-out tickets | 6/6 | 6/6 |
 
-## Second review — 6 November 2026
+In this notebook baseline, training tickets **5 and 13** were incorrect. Both
+were correct after training. The user subsequently ran all 14 through the
+loaded trained model again and reported 14/14; that repeat is recorded as
+user-reported evidence, separate from the original archive predictions.
 
-Both archive SHA-256 hashes are unchanged from the first review. No new executed notebook, source snapshot or corrected evaluation reports were found in `docs` or inside the evidence archive. The conclusions below therefore still apply.
-
-Additional checkpoint verification strengthens the training evidence: all 256 adapter tensors differ between checkpoint 59 and the final adapter, and all 256 differ between checkpoint 118 and the final adapter. The final adapter exactly matches checkpoint 177. All inspected checkpoint tensors are finite; the final adapter's 128 LoRA B tensors contain 7,077,888 nonzero values. This supports actual parameter updates across training, but does not establish classification quality or that the adapter was correctly incorporated into the merged model.
-
-The second review again verified all 118 unique validation IDs, case ordering, reconstructed validation fingerprint, metrics and comparison arithmetic. All 236 evaluation calls across both models are recorded as `AttributeError`; none yielded a valid label. The five saved smoke outputs also contain no valid queue labels. There is no evidence here that the model needs retraining, nor enough diagnostic detail to identify the exact inference failure. The full direct-prediction traceback remains the next required evidence.
+The 14.3 percentage-point change is training-example accuracy. Both held-out
+sets were already perfect, so this experiment measured no held-out accuracy
+gain. The small synthetic sets cannot establish production quality. No latency
+improvement, cost reduction, calibrated confidence, merged-model validation,
+or successful Ollama deployment is claimed.
 
 ## Training evidence
 
-| Item | Recorded result |
-|---|---|
-| Model | microsoft/Phi-4-mini-instruct |
-| GPU | Tesla T4, 15,637,086,208 bytes VRAM |
-| Split | 467 training / 118 validation tickets |
-| Epochs / optimizer steps | 3 / 177 of 177 |
-| Training runtime | 619.3553 seconds (10 minutes 19 seconds) |
-| Mean training loss | 0.231445 |
-| First / last logged window loss | 0.9701 / 0.0750 |
-| Adapter | LoRA rank 8, alpha 16; 256 tensors, 11,534,336 parameters |
-| Preflight | Reports prompt parity and successful CUDA 4-bit operation |
-| Maximum training sequence | 171 tokens |
+- Base: `microsoft/Phi-4-mini-instruct` at `cfbefacb99257ffa30c83adab238a50856ac3083`.
+- GPU: Tesla T4; Python 3.13.16; PyTorch 2.14.1+cu130; CUDA 13.0.
+- Transformers 4.57.6; PEFT 0.18.1; Accelerate 1.11.0; bitsandbytes 0.50.2.
+- Recorded compute dtype: BF16, as saved in the original run.
+- NF4 four-bit base, double quantization; rank 8; alpha 16; dropout 0.05.
+- Attention targets: `qkv_proj`, `o_proj`.
+- Three epochs; batch 1; gradient accumulation 2; learning rate 0.0002.
+- 21 optimizer steps; 3,670,016 trainable adapter parameters.
+- Mean training loss: 0.07643016459908158.
+- Recorded sum of absolute adapter-weight changes: 2737.7521257400513.
 
-Both ZIP archives passed CRC checks. Final trainer state matches across archives. The final adapter's safetensors payload contains finite, nonzero float32 values throughout. These checks support the presence of a structurally readable trained adapter, not its routing accuracy. Loss decreases overall with fluctuations; there is no held-out loss curve from which to infer generalization or overfitting.
+Local archive inspection verified CRC integrity, report arithmetic, case/data
+identity, exact-duplicate split separation, 128 finite FP32 adapter tensors,
+and 64 nonzero LoRA B matrices. This inspection did not rerun model inference.
 
-The actual training time is much shorter than the earlier rough planning estimate. Use this recorded 10m19s figure for this run only; it excludes setup, checkpoint downloads, merge and evaluation.
+## Warnings and template corrections
 
-## Evaluation findings
+The public Microsoft model downloaded without an HF token. The `torch_dtype`
+deprecation did not stop loading. Step 9 completed with an existing
+`peft_config` warning after unloading and reattaching the saved adapter.
+PEFT's unload path removes adapter layers but can retain that metadata.
 
-| Measure | Baseline | Fine-tuned |
-|---|---:|---:|
-| Evaluation cases | 118 | 118 |
-| Cases with AttributeError | 118 | 118 |
-| Successful prediction calls | 0 | 0 |
-| Recorded accuracy | 0% | 0% |
-| Recorded macro-F1 | 0 | 0 |
-| Median inference latency | null | null |
-
-Every case has `label: null`, `latency_ms: null`, and `error: "AttributeError"`. The scorer counts those failures as incorrect, so the zero metrics are arithmetically consistent but **not a valid comparison of model classification ability**. The zero improvement in `comparison.json` does not establish that fine-tuning had no effect. There is no usable speed comparison.
-
-I recomputed the metrics and comparison from the saved predictions and checked their equality after JSON normalization. I reconstructed all 118 validation rows from the Week 4 exchange cases; their fingerprint matches the manifest and both reports. Case IDs, expected labels and order agree across both reports and the exchange cases. The training rows/raw CSV were not supplied, so train/validation leakage and source content were not independently audited.
-
-All five saved smoke outputs are prose responses/refusals instead of allowed queue labels: 0/5 exact matches. Their keys (`raw`, `ms`, `tokens`) and unrestricted `label` values differ from the repository classifier's contract (`raw_output`, `latency_ms`, strict label or null). Thus the smoke result was produced through a changed code path; it cannot verify the checked-in inference path. The executed notebook and run-time source were not supplied, so the exact change is unknown.
-
-## Likely investigation direction, not a confirmed root cause
-
-The recorded environment lists Transformers **4.57.6**. The merged model's `config.json` and `generation_config.json` record **5.22.1**, outside this project's declared `<5` inference dependency. The adapter tokenizer identifies `GPT2Tokenizer`, while the merged tokenizer identifies `TokenizersBackend`. These artifacts indicate environment/serialization changes between stages, or artifacts from different environments. The installation-time package list does not establish which version was active during evaluation.
-
-The evaluator retains only exception class names, so it discarded the traceback required to locate the AttributeError. It is not possible to tell from these reports whether it came from tokenizer output handling, generation/cache code, or a changed classifier implementation. Do not change prompts or retrain as a substitute for diagnosing the exception.
-
-## Recovery sequence
-
-1. Preserve these archives and the trained adapter. Download the executed Colab notebook and the actual `ticket_router/inference.py` used in Colab, including any edits made during troubleshooting.
-2. In the existing GPU runtime, call `HFClassifier.predict()` directly on one authored ticket. This bypasses evaluation's exception handling and exposes the full traceback. Record current package versions and module path in the same cell (example below).
-3. Repair the identified inference error and restore the strict classification prompt/output contract. Resolve the environment drift before re-exporting or evaluating. If a fresh export is necessary, reuse the saved adapter and exact original base revision; do not repeat training unless additional evidence justifies it.
-4. Check direct prediction with the base model and with the adapter/merged model under one compatible environment. Inspect raw outputs and verify that the intended model and prompt are loaded. Classification errors should remain errors, not be remapped into plausible labels.
-5. Rerun baseline and candidate on the same 118 held-out cases, using new output filenames such as `baseline-rerun.json`, `tuned-rerun.json` and `comparison-rerun.json`. Keep these failed reports for provenance.
-6. Export fresh environment details after merge/evaluation, the executed notebook, exact source, new smoke results and reports. Preserve the merged weights or a reproducible adapter-plus-base recovery path. Only then assess accuracy, macro-F1, per-class weaknesses and submission claims.
-
-Run this in Colab after ensuring no other model is occupying GPU memory. If it fails, preserve the full traceback:
-
-```python
-import importlib.metadata as metadata
-import ticket_router.inference as inference
-
-print("Classifier source:", inference.__file__)
-for package in ("torch", "transformers", "peft", "accelerate", "bitsandbytes"):
-    print(package, metadata.version(package))
-
-classifier = inference.HFClassifier("artifacts/phi4-router-merged")
-try:
-    print(classifier.predict("Outlook messages are stuck in my Outbox."))
-finally:
-    del classifier
-    import gc, torch
-    gc.collect()
-    torch.cuda.empty_cache()
-```
-
-The supplied archives contain adapter weights and checkpoints but no merged model weight shards. The evidence ZIP intentionally omits weight files and also omits `.jinja` templates; its merged tokenizer files alone are not a complete deployable model. Absence from that ZIP does not prove the original merged directory lacked its template or weights.
+The current local notebook checks that adapter layers and parameters were
+removed before clearing the stale metadata, and verifies one reloaded adapter.
+It also uses `dtype` and excludes emulated BF16 when selecting precision for
+future runs. The saved run's BF16 environment record remains unchanged.
+These post-run code changes are locally checked and await a new GPU run.
 
 ## Provenance
 
-- Base revision: `cfbefacb99257ffa30c83adab238a50856ac3083`
-- LLaMA Factory commit: `702005ce5237ae10f3c572c3f7741ecfd1422fc9`
-- Validation fingerprint: `90269d08dfb57afdeb9106931f9686620e8562dc8f4f0f2cd59f4abddc78f037`
-- Evidence ZIP SHA-256: `55cfc42b9c688dd3fc84eba55d9e3cf14a80e09d7d0ca407cc9f31dc3fb5e2b6`
-- Adapter ZIP SHA-256: `bdb896da5e3ac12d57a5d00b86eb36112505059ef59d5deb90f633d07fc0db19`
+Original archive SHA-256:
+`e0bb758433be4aa9318899696bd15d26fbacde40d8ccd50e2654671165d8c3b0`.
 
-Week 3 and Week 4 integration boundaries remain unchanged. Nothing was published or submitted.
+The original ZIP and extracted adapter are under
+`artifacts/phi4-learning-20261112-181641-65125f/`.
+Readable original reports, data, environment, prompt, training logs, and file
+hashes are under `records/phi4-learning-20261112-181641-65125f/`.
+No executed Colab notebook or full merged checkpoint was supplied.
+
+Previous run artifacts and recovery workflows were removed during project
+cleanup. Their removal inventory is `records/cleanup-20261112.json`.

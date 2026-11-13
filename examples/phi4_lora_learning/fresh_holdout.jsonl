@@ -1,0 +1,6 @@
+{"ticket": "The room booking was accepted, but Outlook's calendar still shows the old meeting time. Please repair the calendar update.", "label": "O365"}
+{"ticket": "Messages to purchasing@company.example bounce because its shared mailbox is full. There is plenty of space on the purchasing network drive.", "label": "O365"}
+{"ticket": "Our project folder permissions are correct. A colleague needs permission to send email using the project's shared mailbox address.", "label": "O365"}
+{"ticket": "My Teams call is fine, but renaming a subfolder on the mapped R: drive says I lack the required permission.", "label": "Fileservice"}
+{"ticket": "The scans arrive in our shared mailbox successfully. Please recover last Friday's version of the invoice file stored on the network file server.", "label": "Fileservice"}
+{"ticket": "Please remove a departing contractor's access to the engineering network share. Their email access has already been handled.", "label": "Fileservice"}

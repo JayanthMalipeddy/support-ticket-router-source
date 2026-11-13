@@ -1,13 +1,24 @@
 import csv
 import json
+import shutil
 import uuid
 from contextlib import contextmanager
 
 @contextmanager
 def test_directory():
-    root=Path("artifacts/test-fixtures")/uuid.uuid4().hex
+    fixture_base=Path("artifacts/test-fixtures").resolve()
+    root=fixture_base/uuid.uuid4().hex
     root.mkdir(parents=True)
-    yield str(root)
+    try:
+        yield str(root)
+    finally:
+        if root.resolve().parent != fixture_base:
+            raise RuntimeError("Fixture cleanup escaped its directory")
+        shutil.rmtree(root)
+        try:
+            fixture_base.rmdir()
+        except OSError:
+            pass
 
 import unittest
 from pathlib import Path

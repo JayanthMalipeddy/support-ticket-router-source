@@ -1,0 +1,17 @@
+{
+  "training_examples": {
+    "before_accuracy": 0.8571428571428571,
+    "after_accuracy": 1.0,
+    "difference_percentage_points": 14.28571428571429
+  },
+  "original_checks": {
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "difference_percentage_points": 0.0
+  },
+  "fresh_holdout": {
+    "before_accuracy": 1.0,
+    "after_accuracy": 1.0,
+    "difference_percentage_points": 0.0
+  }
+}

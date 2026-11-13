@@ -1,31 +1,61 @@
-# Corrected Colab workflow
+# Phi-4-mini two-queue notebook
 
-Use the updated `notebooks/Train_Phi4_Support_Router.ipynb` and rebuild `dist/support-ticket-router-source.zip` with `python -m scripts.package_source`. The old ZIP will not contain the new workflow helpers. Old evidence archives are excluded from the source ZIP.
+Use `notebooks/Phi4_Mini_LoRA_Learning.ipynb`. It contains the complete small
+exercise and embeds the data in `examples/phi4_lora_learning/`.
 
-## Recover the existing completed training
+1. Open Google Colab and choose **File > Upload notebook**.
+2. Upload the notebook from this project.
+3. Choose **Runtime > Change runtime type > T4 GPU**, if available.
+4. Run notebook step 1 to install dependencies.
+5. Choose **Runtime > Restart session**, then continue at step 2.
+6. Run the remaining numbered steps in order. Run training step 8 once per run.
+7. Download the results ZIP in step 10 before the runtime expires.
 
-1. Upload the updated notebook to a fresh Colab GPU runtime.
-2. Run the first cell, choose `recover`, and upload the new source ZIP.
-3. In the recovery cell, upload the original `docs/phi4-router-adapter.zip` and `docs/week5-evidence.zip` together.
-4. Continue in order. Installation creates an isolated Python environment. Enter the actual CSV column names when prompted. The regenerated split must match the original manifest exactly.
-5. The notebook downloads the recorded original base revision and checks the real adapter tensors. It skips training, exports again under the pinned environment, verifies merged shards and prompt parity, and runs real smoke and held-out inference.
-6. Preserve the full traceback if a cell fails. Run the evidence download cell even after a failure; it packages existing diagnostics without creating replacement scores. Do not upgrade Transformers or substitute a different classifier to bypass an error.
-7. Download the evidence ZIP, executed notebook, adapter and merged weights. The evidence ZIP contains ticket text and should not be published without data redistribution permission.
+| Notebook step | Action |
+|---|---|
+| 1 | Install pinned libraries; restart the session afterward |
+| 2 | Check GPU, choose native training precision, and create a run folder |
+| 3 | Prepare 14 training examples and two separate sets of six checks |
+| 4 | Download the original Microsoft model and record its revision |
+| 5 | Measure the baseline, one ticket per request |
+| 6 | Tokenize; supervise only the assistant answer and ending tokens |
+| 7 | Attach LoRA and verify that base weights are frozen |
+| 8 | Train for three epochs and save the changed adapter weights |
+| 9 | Reload the saved adapter and evaluate using the same procedure |
+| 10 | Download adapter, tokenizer, predictions, data, and training logs |
 
-## Start a new training run
+Keep evaluation examples out of training. Improvement on the 14 training
+examples measures learning of those examples; fresh tickets are needed to
+assess generalization. The earlier Ollama batch prompt used a different
+setup, so the notebook records its own matched baseline.
 
-Choose `train` instead of `recover`. The recovery-upload cell is skipped. The remaining cells prepare a new deterministic split, train using the configuration, and run the same integrity and inference checks. Training output is verified against its actual trainer state and tensor data; no accuracy, loss, duration or completion score is prefilled.
+## Check all 14 tickets in an active trained session
 
-## Changes and limits
+After step 9, run a new code cell:
 
-- ML code runs in fresh subprocesses using one isolated interpreter, avoiding a mixture of the Colab kernel's imported packages and newly installed versions.
-- Core package versions match the recorded training versions; the exact factory commit is retained. These are configuration pins, not fabricated results. They still need installation verification in a fresh Colab runtime.
-- Tokenization explicitly returns an input dictionary, and generation uses its actual input IDs and attention mask. Both models use cache-disabled generation to remove cache-version behavior from this troubleshooting run; its latency is not directly comparable with older runs.
-- Evaluation exceptions now halt the CLI with a chained traceback. Saved reports with inference exceptions cannot be compared as completed results. Invalid generated text is still scored honestly as incorrect, never remapped to a valid label.
-- Smoke cases are selected from the real prepared dataset, one per class. Expected labels are never passed to the model. Smoke cases are part of validation, not an independent quality test.
-- The evidence includes source code, executed subprocess scripts, package versions before/after major stages, logs, datasets, configuration and tokenizer templates. The executed Colab notebook must still be downloaded separately.
-- Nine software tests are distinct from model validation. Existing tests contain explicit test fixtures; neither notebook execution nor measured model reports use them.
+```python
+correct = 0
+for number, row in enumerate(TRAIN, 1):
+    prediction = classify(row["ticket"])
+    matched = prediction == row["label"]
+    correct += int(matched)
+    print(f"{number}: {prediction} | Expected: {row['label']} | {'PASS' if matched else 'FAIL'}")
+print(f"Final score: {correct}/{len(TRAIN)}")
+```
 
-The previous artifacts support completed adapter training, but not successful classification. The corrected workflow cannot guarantee accuracy or improvement. Only a completed real inference run can establish those results. The exact cause of the previous AttributeError was not recoverable from the old reports, which retained only its class name.
+This requires the model and adapter still to be loaded in that Colab session.
+Restarting the runtime clears them. `ollama run phi4-mini` loads the separately
+installed Ollama model; this notebook does not import its trained adapter there.
 
-References used in the repair: [factory dependencies at the recorded commit](https://github.com/hiyouga/LLaMA-Factory/blob/702005ce5237ae10f3c572c3f7741ecfd1422fc9/pyproject.toml), [Hugging Face chat templates](https://huggingface.co/docs/transformers/v4.57.1/chat_templating).
+## Saved successful run and current template
+
+The 12 November run achieved 14/14 after training and again in a user-reported
+repeat check. Read its immutable reports under
+`records/phi4-learning-20261112-181641-65125f/` and the current pointer in
+`records/latest.json`.
+
+After that run, the local template was improved to choose BF16 only with
+native support, so a T4 selects FP16; use the `dtype` loading argument; and
+verify adapter removal before clearing stale PEFT metadata on reload. Those
+revisions have passed local checks but have not been rerun on a GPU. They do
+not alter the saved run or guarantee that another run will have identical scores.

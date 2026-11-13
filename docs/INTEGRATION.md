@@ -1,5 +1,9 @@
 # Integration contract
 
+The retained API uses a broader seven-label contract. The latest successful run
+is a two-label Colab learning exercise and its adapter has not been deployed
+through this API. Current results and artifacts are described in the project README.
+
 The router makes a recommendation. It does not send customer responses, create tickets, execute recovery or grant approval.
 
 ## Week 3: Integration Hub

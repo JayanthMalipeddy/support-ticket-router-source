@@ -1,0 +1,17 @@
+{
+  "model_id": "microsoft/Phi-4-mini-instruct",
+  "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+  "generation": {
+    "max_new_tokens": 12,
+    "do_sample": false,
+    "use_cache": false,
+    "eos_token_id": [
+      199999,
+      200020
+    ],
+    "pad_token_id": 199999
+  },
+  "quantization": "4-bit NF4, double quantization",
+  "seed": 42,
+  "evaluation": "one ticket per request; same prompt and decoding before/after"
+}

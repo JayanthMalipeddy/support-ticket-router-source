@@ -1,0 +1,95 @@
+{
+  "run_id": "phi4-learning-20261112-181641-65125f",
+  "date": "2026-11-12",
+  "source": "User-reported Colab repeat check in this conversation after the saved run",
+  "locally_rerun": false,
+  "included_in_original_zip": false,
+  "total": 14,
+  "correct": 14,
+  "cases": [
+    {
+      "id": 1,
+      "expected": "O365",
+      "response": "O365",
+      "passed": true
+    },
+    {
+      "id": 2,
+      "expected": "O365",
+      "response": "O365",
+      "passed": true
+    },
+    {
+      "id": 3,
+      "expected": "O365",
+      "response": "O365",
+      "passed": true
+    },
+    {
+      "id": 4,
+      "expected": "O365",
+      "response": "O365",
+      "passed": true
+    },
+    {
+      "id": 5,
+      "expected": "O365",
+      "response": "O365",
+      "passed": true
+    },
+    {
+      "id": 6,
+      "expected": "O365",
+      "response": "O365",
+      "passed": true
+    },
+    {
+      "id": 7,
+      "expected": "O365",
+      "response": "O365",
+      "passed": true
+    },
+    {
+      "id": 8,
+      "expected": "Fileservice",
+      "response": "Fileservice",
+      "passed": true
+    },
+    {
+      "id": 9,
+      "expected": "Fileservice",
+      "response": "Fileservice",
+      "passed": true
+    },
+    {
+      "id": 10,
+      "expected": "Fileservice",
+      "response": "Fileservice",
+      "passed": true
+    },
+    {
+      "id": 11,
+      "expected": "Fileservice",
+      "response": "Fileservice",
+      "passed": true
+    },
+    {
+      "id": 12,
+      "expected": "Fileservice",
+      "response": "Fileservice",
+      "passed": true
+    },
+    {
+      "id": 13,
+      "expected": "Fileservice",
+      "response": "Fileservice",
+      "passed": true
+    },
+    {
+      "id": 14,
+      "expected": "Fileservice",
+      "response": "Fileservice",
+      "passed": true
+    }
+  ]
+}

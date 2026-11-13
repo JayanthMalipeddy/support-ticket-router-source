@@ -1,0 +1,4 @@
+{
+  "instruction": "Classify this support ticket.\nReturn exactly one label: O365 or Fileservice.\n\nO365: Outlook, Teams, or mailbox problems.\nFileservice: shared-drive or network-folder access, permissions, or file-recovery problems.\n\nRoute according to what needs fixing.",
+  "suffix": "\n\nTicket: <ticket>\nLabel:"
+}

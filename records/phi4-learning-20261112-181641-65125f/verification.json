@@ -1,0 +1,41 @@
+{
+  "run_id": "phi4-learning-20261112-181641-65125f",
+  "archive_sha256": "e0bb758433be4aa9318899696bd15d26fbacde40d8ccd50e2654671165d8c3b0",
+  "archive_crc_passed": true,
+  "model_id": "microsoft/Phi-4-mini-instruct",
+  "base_revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+  "scores": {
+    "training_examples": {
+      "total": 14,
+      "before_correct": 12,
+      "after_correct": 14,
+      "corrected_ids": [
+        5,
+        13
+      ]
+    },
+    "original_checks": {
+      "total": 6,
+      "before_correct": 6,
+      "after_correct": 6,
+      "corrected_ids": []
+    },
+    "fresh_holdout": {
+      "total": 6,
+      "before_correct": 6,
+      "after_correct": 6,
+      "corrected_ids": []
+    }
+  },
+  "optimizer_steps": 21,
+  "epochs": 3,
+  "train_loss": 0.07643016459908158,
+  "adapter_parameters": 3670016,
+  "adapter_tensors": 128,
+  "nonzero_lora_B_matrices": 64,
+  "all_adapter_values_finite": true,
+  "adapter_absolute_change": 2737.7521257400513,
+  "local_model_inference_rerun": false,
+  "reviewed_at_utc": "2026-11-12T19:32:06.571619+00:00",
+  "method": "Offline archive integrity, data/report reconciliation, and finite/nonzero adapter tensor inspection"
+}

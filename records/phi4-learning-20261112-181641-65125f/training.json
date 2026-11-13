@@ -1,0 +1,178 @@
+{
+  "metrics": {
+    "train_runtime": 124.8898,
+    "train_samples_per_second": 0.336,
+    "train_steps_per_second": 0.168,
+    "total_flos": 208057339478016.0,
+    "train_loss": 0.07643016459908158,
+    "epoch": 3.0
+  },
+  "logs": [
+    {
+      "loss": 0.8637,
+      "grad_norm": 49.882537841796875,
+      "learning_rate": 0.0002,
+      "epoch": 0.14285714285714285,
+      "step": 1
+    },
+    {
+      "loss": 0.008,
+      "grad_norm": 0.2041136473417282,
+      "learning_rate": 0.0002,
+      "epoch": 0.2857142857142857,
+      "step": 2
+    },
+    {
+      "loss": 0.0606,
+      "grad_norm": 3.4156482219696045,
+      "learning_rate": 0.0002,
+      "epoch": 0.42857142857142855,
+      "step": 3
+    },
+    {
+      "loss": 0.331,
+      "grad_norm": 6.29302978515625,
+      "learning_rate": 0.0002,
+      "epoch": 0.5714285714285714,
+      "step": 4
+    },
+    {
+      "loss": 0.2107,
+      "grad_norm": 6.118218898773193,
+      "learning_rate": 0.0002,
+      "epoch": 0.7142857142857143,
+      "step": 5
+    },
+    {
+      "loss": 0.0092,
+      "grad_norm": 0.25472432374954224,
+      "learning_rate": 0.0002,
+      "epoch": 0.8571428571428571,
+      "step": 6
+    },
+    {
+      "loss": 0.0024,
+      "grad_norm": 0.09307114034891129,
+      "learning_rate": 0.0002,
+      "epoch": 1.0,
+      "step": 7
+    },
+    {
+      "loss": 0.0011,
+      "grad_norm": 0.027637241408228874,
+      "learning_rate": 0.0002,
+      "epoch": 1.1428571428571428,
+      "step": 8
+    },
+    {
+      "loss": 0.0089,
+      "grad_norm": 0.24672582745552063,
+      "learning_rate": 0.0002,
+      "epoch": 1.2857142857142856,
+      "step": 9
+    },
+    {
+      "loss": 0.0084,
+      "grad_norm": 0.31484168767929077,
+      "learning_rate": 0.0002,
+      "epoch": 1.4285714285714286,
+      "step": 10
+    },
+    {
+      "loss": 0.0414,
+      "grad_norm": 1.9184541702270508,
+      "learning_rate": 0.0002,
+      "epoch": 1.5714285714285714,
+      "step": 11
+    },
+    {
+      "loss": 0.0033,
+      "grad_norm": 0.15719421207904816,
+      "learning_rate": 0.0002,
+      "epoch": 1.7142857142857144,
+      "step": 12
+    },
+    {
+      "loss": 0.0508,
+      "grad_norm": 1.8664494752883911,
+      "learning_rate": 0.0002,
+      "epoch": 1.8571428571428572,
+      "step": 13
+    },
+    {
+      "loss": 0.0008,
+      "grad_norm": 0.02030816860496998,
+      "learning_rate": 0.0002,
+      "epoch": 2.0,
+      "step": 14
+    },
+    {
+      "loss": 0.0005,
+      "grad_norm": 0.015300038270652294,
+      "learning_rate": 0.0002,
+      "epoch": 2.142857142857143,
+      "step": 15
+    },
+    {
+      "loss": 0.0005,
+      "grad_norm": 0.013548800721764565,
+      "learning_rate": 0.0002,
+      "epoch": 2.2857142857142856,
+      "step": 16
+    },
+    {
+      "loss": 0.0009,
+      "grad_norm": 0.03702056407928467,
+      "learning_rate": 0.0002,
+      "epoch": 2.4285714285714284,
+      "step": 17
+    },
+    {
+      "loss": 0.002,
+      "grad_norm": 0.12085200101137161,
+      "learning_rate": 0.0002,
+      "epoch": 2.571428571428571,
+      "step": 18
+    },
+    {
+      "loss": 0.0002,
+      "grad_norm": 0.004024280235171318,
+      "learning_rate": 0.0002,
+      "epoch": 2.7142857142857144,
+      "step": 19
+    },
+    {
+      "loss": 0.0005,
+      "grad_norm": 0.011883792467415333,
+      "learning_rate": 0.0002,
+      "epoch": 2.857142857142857,
+      "step": 20
+    },
+    {
+      "loss": 0.0001,
+      "grad_norm": 0.0019249629694968462,
+      "learning_rate": 0.0002,
+      "epoch": 3.0,
+      "step": 21
+    },
+    {
+      "train_runtime": 124.8898,
+      "train_samples_per_second": 0.336,
+      "train_steps_per_second": 0.168,
+      "total_flos": 208057339478016.0,
+      "train_loss": 0.07643016459908158,
+      "epoch": 3.0,
+      "step": 21
+    }
+  ],
+  "optimizer_steps": 21,
+  "adapter_absolute_change": 2737.7521257400513,
+  "learning_rate": 0.0002,
+  "epochs": 3,
+  "lora_rank": 8,
+  "lora_alpha": 16,
+  "target_modules": [
+    "qkv_proj",
+    "o_proj"
+  ]
+}

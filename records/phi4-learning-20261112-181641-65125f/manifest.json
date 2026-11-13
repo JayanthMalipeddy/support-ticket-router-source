@@ -1,0 +1,135 @@
+{
+  "run_id": "phi4-learning-20261112-181641-65125f",
+  "archive_path": "artifacts/phi4-learning-20261112-181641-65125f/run.zip",
+  "archive_sha256": "e0bb758433be4aa9318899696bd15d26fbacde40d8ccd50e2654671165d8c3b0",
+  "files": [
+    {
+      "archive_member": "after.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/after.json",
+      "bytes": 6817,
+      "sha256": "04b62ec7d5754902f76579a55dad95001948a804730916829cc20bdb13be4f2e"
+    },
+    {
+      "archive_member": "original_checks.jsonl",
+      "path": "records/phi4-learning-20261112-181641-65125f/original_checks.jsonl",
+      "bytes": 540,
+      "sha256": "f9fa6c23544537a941dbe21b595cbf0762a6bfbb63c48be4290aaaa858648877"
+    },
+    {
+      "archive_member": "comparison.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/comparison.json",
+      "bytes": 400,
+      "sha256": "6d0d41078c80115bea68d2230a195fe818e95b4d2c26207641ed36cde35114df"
+    },
+    {
+      "archive_member": "prompt.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/prompt.json",
+      "bytes": 324,
+      "sha256": "1c78aedb0d099c152e1509c8b0110fd7dc71505ea0b3422e46a1ff53f46016dc"
+    },
+    {
+      "archive_member": "before.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/before.json",
+      "bytes": 6834,
+      "sha256": "b53662a404f80e3c85388c1652e5c39f1bf191fca6339f8000aae97715d99ff2"
+    },
+    {
+      "archive_member": "provenance.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/provenance.json",
+      "bytes": 434,
+      "sha256": "36c9551ec662a61e6e08a158d5cba8723235686fef41ec76904ca77a98b44d7b"
+    },
+    {
+      "archive_member": "training_examples.jsonl",
+      "path": "records/phi4-learning-20261112-181641-65125f/training_examples.jsonl",
+      "bytes": 2263,
+      "sha256": "14a80a9201ba341d4f3a42203ca9636a113122931b6e444494f38f46b456185f"
+    },
+    {
+      "archive_member": "environment.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/environment.json",
+      "bytes": 230,
+      "sha256": "f7ffcbcbabf66c9e8830acba57e81915db89ce619d3b4cb8c19e21981ff580fd"
+    },
+    {
+      "archive_member": "fresh_holdout.jsonl",
+      "path": "records/phi4-learning-20261112-181641-65125f/fresh_holdout.jsonl",
+      "bytes": 979,
+      "sha256": "a0adf9fc913386919a1da6bdce10bad972064312c548bd34cfc86f3c81926a02"
+    },
+    {
+      "archive_member": "training.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/training.json",
+      "bytes": 3948,
+      "sha256": "049bc936d0ad80ca31aef314cae2331e4b47af3726e00acc475ce935aea519d2"
+    },
+    {
+      "archive_member": "adapter/tokenizer_config.json",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/tokenizer_config.json",
+      "bytes": 2516,
+      "sha256": "1a2748cd4f6c7c91e768db11d6538e8386863aee17bdce71be5370f6e7736753"
+    },
+    {
+      "archive_member": "adapter/chat_template.jinja",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/chat_template.jinja",
+      "bytes": 423,
+      "sha256": "febf589225c9728ab791f52e8897d7607a823d45368f0a4c92fa68997b40cce9"
+    },
+    {
+      "archive_member": "adapter/tokenizer.json",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/tokenizer.json",
+      "bytes": 15524095,
+      "sha256": "382cc235b56c725945e149cc25f191da667c836655efd0857b004320e90e91ea"
+    },
+    {
+      "archive_member": "adapter/adapter_config.json",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/adapter_config.json",
+      "bytes": 1022,
+      "sha256": "ac069a050b8a622fb82378c86a1870e6918e1fda3a7ee09e1f10608f72dbaa23"
+    },
+    {
+      "archive_member": "adapter/adapter_model.safetensors",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/adapter_model.safetensors",
+      "bytes": 14697152,
+      "sha256": "9e6198761c698d7e67b81cf0f3870129e2ad92b6af0f832beea0999014148bc4"
+    },
+    {
+      "archive_member": "adapter/vocab.json",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/vocab.json",
+      "bytes": 3910310,
+      "sha256": "6cb65a857824fa6615bb1782d95d882617a8bbce1da0317118586b36f39e98bd"
+    },
+    {
+      "archive_member": "adapter/README.md",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/README.md",
+      "bytes": 5212,
+      "sha256": "a8279c840a8926f7f169db56928b6b924f6626a4281560021216c85dcfe587dd"
+    },
+    {
+      "archive_member": "adapter/merges.txt",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/merges.txt",
+      "bytes": 2418348,
+      "sha256": "856ce61180bb689282eed6b3a6838bb1f438399be23aefe9d20eb379791fb4ad"
+    },
+    {
+      "archive_member": "adapter/added_tokens.json",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/added_tokens.json",
+      "bytes": 249,
+      "sha256": "d4f2aceb0f20b71dd1f4bcc7e052e4412946bf281840b8f83d39f259571af486"
+    },
+    {
+      "archive_member": "adapter/special_tokens_map.json",
+      "path": "artifacts/phi4-learning-20261112-181641-65125f/adapter/special_tokens_map.json",
+      "bytes": 587,
+      "sha256": "aff38493227d813e29fcf8406e8e90062f1f031aa47d589325e9c31d89ac7cc3"
+    },
+    {
+      "archive_member": "adapter/adapter_config.json",
+      "path": "records/phi4-learning-20261112-181641-65125f/adapter_config.json",
+      "bytes": 1022,
+      "sha256": "ac069a050b8a622fb82378c86a1870e6918e1fda3a7ee09e1f10608f72dbaa23"
+    }
+  ],
+  "executed_notebook_supplied": false,
+  "notebook_note": "The local notebook template includes post-run fixes; it is not an executed notebook from this run."
+}

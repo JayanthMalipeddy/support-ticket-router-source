@@ -1,0 +1,205 @@
+{
+  "training_examples": {
+    "correct": 14,
+    "total": 14,
+    "accuracy": 1.0,
+    "cases": [
+      {
+        "id": 1,
+        "ticket": "Please give our new starter access to the shared mailbox called Finance. They already have access to the Finance network drive.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "ticket": "My Outlook folders disappeared after my email profile was recreated. My documents and mapped drives are still available.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 3,
+        "ticket": "The department shared drive opens normally, but Outlook says it cannot connect to the email server.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 4,
+        "ticket": "A Teams meeting invitation arrived in my inbox, but accepting it does not add the meeting to my Outlook calendar.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 5,
+        "ticket": "I can open the HR network folder, but I cannot send email from the HR shared mailbox. Please enable the mailbox sending permission.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 6,
+        "ticket": "Outlook cannot expand the folders inside our shared mailbox. Windows Explorer opens our network folders without any problems.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 7,
+        "ticket": "My headset works in other applications, but people cannot hear me during Teams calls.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 8,
+        "ticket": "Outlook receives attachments correctly, but saving them to the department network folder gives an access-denied error. Saving to my desktop works.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 9,
+        "ticket": "Someone posted a link in Teams to our network share at \\\\fileserver\\Projects. Windows says I do not have permission to open that location.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 10,
+        "ticket": "The shared mailbox called Finance works. I need write permission on the separate Finance folder on the network file server.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 11,
+        "ticket": "My manager emailed me the path \\\\fileserver\\HR. The email opens correctly, but Windows cannot connect to that shared folder.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 12,
+        "ticket": "Our team stores exported email archives on the network drive. I accidentally deleted one from that drive and need the file restored from backup.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 13,
+        "ticket": "Outlook and Teams work after my laptop replacement, but the mapped department drive was not added. Please reconnect it.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 14,
+        "ticket": "The spreadsheet attached to a Teams message opens correctly. A separate copy on our department network share opens read-only, and I need permission to edit that copy.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      }
+    ]
+  },
+  "original_checks": {
+    "correct": 6,
+    "total": 6,
+    "accuracy": 1.0,
+    "cases": [
+      {
+        "id": 1,
+        "ticket": "My work email stopped syncing on my phone.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "ticket": "Teams won't let me join a scheduled meeting.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 3,
+        "ticket": "I cannot open the shared mailbox for our support team.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 4,
+        "ticket": "Windows says the network drive is unavailable.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 5,
+        "ticket": "Please give me permission to open the department's shared folder.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 6,
+        "ticket": "I accidentally deleted a document from our network share. Please recover it.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      }
+    ]
+  },
+  "fresh_holdout": {
+    "correct": 6,
+    "total": 6,
+    "accuracy": 1.0,
+    "cases": [
+      {
+        "id": 1,
+        "ticket": "The room booking was accepted, but Outlook's calendar still shows the old meeting time. Please repair the calendar update.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "ticket": "Messages to purchasing@company.example bounce because its shared mailbox is full. There is plenty of space on the purchasing network drive.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 3,
+        "ticket": "Our project folder permissions are correct. A colleague needs permission to send email using the project's shared mailbox address.",
+        "label": "O365",
+        "response": "O365",
+        "correct": true
+      },
+      {
+        "id": 4,
+        "ticket": "My Teams call is fine, but renaming a subfolder on the mapped R: drive says I lack the required permission.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 5,
+        "ticket": "The scans arrive in our shared mailbox successfully. Please recover last Friday's version of the invoice file stored on the network file server.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      },
+      {
+        "id": 6,
+        "ticket": "Please remove a departing contractor's access to the engineering network share. Their email access has already been handled.",
+        "label": "Fileservice",
+        "response": "Fileservice",
+        "correct": true
+      }
+    ]
+  }
+}
